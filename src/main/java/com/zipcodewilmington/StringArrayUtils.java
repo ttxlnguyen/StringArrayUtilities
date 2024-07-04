@@ -91,8 +91,18 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-
-        return true;
+        String string = Arrays.toString(array).toLowerCase(); // turns array into string, saves headache of testing for capitals
+        int test = 0;
+        boolean pangramic = false;
+        for (char c = 'a'; c <= 'z'; c++){ // loops through alphabet from 1-26
+            test = string.indexOf(c); //
+            if (test >= 0) {
+                pangramic = true;
+            }else {
+                pangramic = false;
+            }
+        }
+        return pangramic;
     }
 
     /**
@@ -101,6 +111,7 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
+
         return 0;
     }
 
@@ -110,6 +121,7 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+
         return null;
     }
 
@@ -127,6 +139,7 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+
         return null;
     }
 }
