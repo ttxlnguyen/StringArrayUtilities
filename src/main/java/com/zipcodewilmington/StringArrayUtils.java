@@ -111,9 +111,9 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        int counter = 0;
-        for (int i = 0; i < array.length; i++){
-            if (array[i].equals(value)){
+        int counter = 0; // Initialize counter
+        for (int i = 0; i < array.length; i++){ // Iterates through String[] array
+            if (array[i].equals(value)){ // increment counter if string value occurs more than once
                 counter++;
             }
         }
@@ -126,8 +126,15 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-
-        return null;
+        ArrayList<String> newArray = new ArrayList<>(); // instantiates new array list
+        for(String string : array){
+            if (!string.equals(valueToRemove)){
+                newArray.add(string);
+            }
+        }
+        String[] rebuilt = new String[newArray.size()];
+        rebuilt = newArray.toArray(rebuilt);
+        return rebuilt; // condensed version of current return
     }
 
     /**
@@ -135,8 +142,14 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-
-        return null;
+        ArrayList<String> newArray = new ArrayList<>(); // Initiates a new ArrayList
+        newArray.add(array[0]);
+        for (int i = 1; i < array.length; i++){ // Iterates through String[] array
+            if(!array[i-1].equals(array[i])){ // Checks previous index and current index
+                newArray.add(array[i]);
+            }
+        }
+        return newArray.toArray(new String[0]); // superCondensed version of return above
     }
 
     /**
@@ -144,7 +157,18 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+        ArrayList<String> test = new ArrayList<>(); // Initiates a new ArrayList
+        StringBuilder chars = new StringBuilder(array[0]); // Initiates a StringBuilder that already holds the value at array[0] (Lets you keep adding to the string)
 
-        return null;
+        for (int i = 1; i < array.length; i++) { // Iterates through String[] array
+            if (array[i].equals(array[i - 1])) { // Checks if index[i] is equal to the previous index...
+                chars.append(array[i]); // It will add the index[i] to the stringbuilder if consecutive duplicate
+            } else {
+                test.add(chars.toString()); // Add the string we made to our ArrayList
+                chars = new StringBuilder(array[i]); // Resets the Stringbuilder for next sequence
+            }
+        }
+        test.add(chars.toString()); // Add the last sequence after loop ends
+        return test.toArray(new String[0]); // Convert ArrayList to String array
     }
 }
