@@ -48,7 +48,7 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
         for (int i = 0; i < array.length; i++) { // Iterates through an array
-            if (array[i].equals(value)) { // Checks to see if the array at index [i] is equal to value given using .equals for exact string
+            if (array[i].equals(value)) { // Checks to see if the array at index[i] is equal to value given using .equals for exact string
                 return true;
             }
         }
@@ -95,11 +95,12 @@ public class StringArrayUtils {
         int test = 0;
         boolean pangramic = false;
         for (char c = 'a'; c <= 'z'; c++){ // loops through alphabet from 1-26
-            test = string.indexOf(c); //
-            if (test >= 0) {
-                pangramic = true;
+            test = string.indexOf(c); // sets test to index[c] to run to for loop
+            if (test >= 0) { // conditional to ensure loops keeps running while pangramic = true
+                pangramic = true; // turns pangramic true while letter is present
             }else {
-                pangramic = false;
+                pangramic = false; // turns pangramic back to false and breaks out of loop
+                break;
             }
         }
         return pangramic;
@@ -127,14 +128,14 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
         ArrayList<String> newArray = new ArrayList<>(); // instantiates new array list
-        for(String string : array){
-            if (!string.equals(valueToRemove)){
-                newArray.add(string);
+        for(String string : array){ // enhanced for loop of version above
+            if (!string.equals(valueToRemove)){ // checks if valueToRemove is in the array
+                newArray.add(string); // if string does not equal valueToRemove, add string to newArray
             }
         }
         String[] rebuilt = new String[newArray.size()];
-        rebuilt = newArray.toArray(rebuilt); // return newArray.toArray(rebuilt)
-        return rebuilt; // condensed version of current return
+        rebuilt = newArray.toArray(rebuilt);
+        return rebuilt; // return newArray.toArray(rebuilt) - condensed version of current return
     }
 
     /**
@@ -143,7 +144,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
         ArrayList<String> newArray = new ArrayList<>(); // Initiates a new ArrayList
-        newArray.add(array[0]);
+        newArray.add(array[0]); // newArrays have elements of given 'array'
         for (int i = 1; i < array.length; i++){ // Iterates through String[] array
             if(!array[i-1].equals(array[i])){ // Checks previous index and current index
                 newArray.add(array[i]);
@@ -162,10 +163,10 @@ public class StringArrayUtils {
 
         for (int i = 1; i < array.length; i++) { // Iterates through String[] array
             if (array[i].equals(array[i - 1])) { // Checks if index[i] is equal to the previous index...
-                chars.append(array[i]); // It will add the index[i] to the stringbuilder if consecutive duplicate
+                chars.append(array[i]); // It will add the index[i] to the StringBuilder if consecutive duplicate
             } else {
                 test.add(chars.toString()); // Add the string we made to our ArrayList
-                chars = new StringBuilder(array[i]); // Resets the Stringbuilder for next sequence
+                chars = new StringBuilder(array[i]); // Resets the StringBuilder for next sequence
             }
         }
         test.add(chars.toString()); // Add the last sequence after loop ends
