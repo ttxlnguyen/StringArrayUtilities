@@ -133,7 +133,7 @@ public class StringArrayUtils {
             }
         }
         String[] rebuilt = new String[newArray.size()];
-        rebuilt = newArray.toArray(rebuilt);
+        rebuilt = newArray.toArray(rebuilt); // return newArray.toArray(rebuilt)
         return rebuilt; // condensed version of current return
     }
 
